@@ -1,14 +1,21 @@
 import { MongoClient, ObjectId } from "mongodb";
 
-import {user, password, host} from "../api/pasword";
+import {user, password, host} from "../database";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
+import Head from "next/head";
 
 function MeetupDetails(props) {
-    return <MeetupDetail
-        title={props.meetupData.title}
-        address={props.meetupData.address} 
-        image={props.meetupData.image}
-        description={props.meetupData.description} />;
+    return <>
+        <Head>
+            <title>{props.meetupData.title}</title>
+            <meta name="description" content={props.meetupData.description} />
+        </Head>
+        <MeetupDetail
+            title={props.meetupData.title}
+            address={props.meetupData.address} 
+            image={props.meetupData.image}
+            description={props.meetupData.description} />
+    </>;
 }
 
 export async function getStaticPaths() {

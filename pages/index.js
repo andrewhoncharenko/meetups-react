@@ -1,10 +1,17 @@
+import Head from "next/head";
 import { MongoClient } from "mongodb";
 
-import {user, password, host} from "../pages/api/pasword";
+import {user, password, host} from "./database";
 import MeetupList from "../components/meetups/MeetupList";
 
 function HomePage(props) {
-    return <MeetupList meetups={props.meetups} />;
+    return <>
+            <Head>
+                <title>React meetups</title>
+                <meta name="description" content="Browse a huge list of highly active react meetups!" />
+            </Head>
+            <MeetupList meetups={props.meetups} />
+        </>;
 }
 
 //export function getServerSideProps() {
